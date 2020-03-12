@@ -1,5 +1,7 @@
 package com.startone.principle;
 
+import com.startone.principle.discount.DiscountStrategy;
+
 import java.util.List;
 
 /**
@@ -10,7 +12,18 @@ import java.util.List;
  */
 public class MarketDiscountCalculator {
 
+    private double totalAmount = 0;
+    private DiscountStrategy[] discountStrategies;
+
     public double calculate(List<Goods> goodItemList) {
-        return goodItemList.stream().mapToDouble(goods -> goods.price * goods.quality).sum();
+
+        for (DiscountStrategy discountStrategy : discountStrategies) {
+            totalAmount+= discountStrategy.getAmount(goodItemList);
+        }
+        return totalAmount;
+    }
+
+    public void initDiscountStrategy(DiscountStrategy... discountStrategies) {
+        this.discountStrategies = discountStrategies;
     }
 }
