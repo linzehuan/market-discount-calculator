@@ -20,6 +20,6 @@ public class PercentDiscountStrategy implements DiscountStrategy {
 
     @Override
     public double getAmount(List<Goods> goodsList) {
-        return goodsList.stream().mapToDouble(goods->goods.price * goods.quality).sum() * percent;
+        return goodsList.stream().mapToDouble(goods -> goods.price * goods.quality * percent).sum();
     }
 }
