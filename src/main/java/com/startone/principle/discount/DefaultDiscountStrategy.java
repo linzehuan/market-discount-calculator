@@ -22,7 +22,6 @@ public class DefaultDiscountStrategy implements DiscountStrategy {
     @Override
     public double getAmount(List<Goods> goodsList) {
         amountInfo.totalAmount = goodsList.stream().mapToDouble(goods -> goods.price * goods.quality).sum();
-        amountInfo.discount = 0;
         amountInfo.goodsList = goodsList;
         return amountInfo.totalAmount - amountInfo.discount;
     }
