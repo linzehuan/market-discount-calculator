@@ -1,4 +1,4 @@
-package com.startone.principle.discount;
+package com.startone.principle.rule;
 
 import com.startone.principle.Category;
 import com.startone.principle.Goods;
@@ -9,7 +9,7 @@ import com.startone.principle.Goods;
  * @email lzh@kapark.cn
  * @date 2020/3/13 11:08 下午
  */
-public class LimitRule implements IRule{
+public class LimitRule implements IRule {
 
     private Category category = Category.ALL;
 

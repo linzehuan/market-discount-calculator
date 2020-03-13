@@ -1,4 +1,4 @@
-package com.startone.principle.discount;
+package com.startone.principle;
 
 import com.startone.principle.Goods;
 

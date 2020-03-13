@@ -1,7 +1,8 @@
 package com.startone.principle.discount;
 
-import com.startone.principle.Category;
+import com.startone.principle.AmountInfo;
 import com.startone.principle.Goods;
+import com.startone.principle.rule.IRule;
 
 import java.util.List;
 import java.util.stream.Collectors;

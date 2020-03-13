@@ -1,6 +1,5 @@
 package com.startone.principle;
 
-import com.startone.principle.discount.AmountInfo;
 import com.startone.principle.discount.DiscountStrategy;
 
 import java.util.List;

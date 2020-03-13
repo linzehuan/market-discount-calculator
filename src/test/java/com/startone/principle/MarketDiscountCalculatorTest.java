@@ -2,6 +2,7 @@ package com.startone.principle;
 
 import com.google.common.collect.Lists;
 import com.startone.principle.discount.*;
+import com.startone.principle.rule.LimitRule;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
