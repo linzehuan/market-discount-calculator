@@ -4,17 +4,18 @@ import com.startone.principle.Category;
 import com.startone.principle.Goods;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.groupingBy;
 
 /**
  * @author Lin Zehuan
  * @description
  * @email lzh@kapark.cn
- * @date 2020/3/13 7:43 上午
+ * @date 2020/3/13 10:36 下午
  */
-public class PercentDiscountStrategy implements DiscountStrategy {
-
-    private double percent;
+public class HalfDiscountStrategy implements DiscountStrategy {
 
     private AmountInfo amountInfo = new AmountInfo();
 
@@ -24,15 +25,13 @@ public class PercentDiscountStrategy implements DiscountStrategy {
     public void setLimitRule(IRule rule) {
         this.rule = rule;
     }
-    public PercentDiscountStrategy(double percent) {
-        this.percent = percent;
-    }
 
     @Override
     public double getAmount(List<Goods> goodsList) {
-        amountInfo.totalAmount = goodsList.stream().filter(this::filterCondition).mapToDouble(goods -> goods.price * goods.quality).sum();
-        amountInfo.discount = goodsList.stream().filter(this::filterCondition).mapToDouble(goods -> goods.price * goods.quality * (1 - percent)).sum();
         amountInfo.goodsList = goodsList.stream().filter(this::filterCondition).collect(Collectors.toList());
+        amountInfo.totalAmount = goodsList.stream().filter(this::filterCondition).mapToDouble(goods -> goods.price * goods.quality).sum();
+        Map<String, List<Goods>> collect = amountInfo.goodsList.stream().collect(groupingBy(Goods::getName));
+        amountInfo.discount = collect.values().stream().mapToDouble(goods -> (goods.stream().mapToInt(Goods::getQuality).sum() / 2) * goods.get(0).price / 2).sum();
         return amountInfo.totalAmount - amountInfo.discount;
     }
 
@@ -47,5 +46,4 @@ public class PercentDiscountStrategy implements DiscountStrategy {
         }
         return rule.filterCondition(goods);
     }
-
 }

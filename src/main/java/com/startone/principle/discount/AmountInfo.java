@@ -8,13 +8,13 @@ import java.util.List;
  * @author Lin Zehuan
  * @description
  * @email lzh@kapark.cn
- * @date 2020/3/13 7:40 上午
+ * @date 2020/3/13 5:56 下午
  */
-public interface DiscountStrategy {
+public class AmountInfo {
 
-    void setLimitRule(IRule rule);
+    public double totalAmount = 0;
 
-    double getAmount(List<Goods> goodsList);
+    public double discount = 0;
 
-    AmountInfo getAmountInfo();
+    public List<Goods> goodsList;
 }

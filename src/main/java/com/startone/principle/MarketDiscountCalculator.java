@@ -1,5 +1,6 @@
 package com.startone.principle;
 
+import com.startone.principle.discount.AmountInfo;
 import com.startone.principle.discount.DiscountStrategy;
 
 import java.util.List;
@@ -13,14 +14,29 @@ import java.util.List;
 public class MarketDiscountCalculator {
 
     private double totalAmount = 0;
+
     private DiscountStrategy[] discountStrategies;
 
     public double calculate(List<Goods> goodItemList) {
-
+        checkStrategy();
+        List<Goods> remainGoodList = goodItemList;
         for (DiscountStrategy discountStrategy : discountStrategies) {
-            totalAmount+= discountStrategy.getAmount(goodItemList);
+            totalAmount += discountStrategy.getAmount(remainGoodList);
+            AmountInfo amountInfo = discountStrategy.getAmountInfo();
+            removeGoodList(remainGoodList, amountInfo.goodsList);
         }
+
         return totalAmount;
+    }
+
+    private void checkStrategy() {
+        if (discountStrategies == null || discountStrategies.length == 0) {
+            throw new RuntimeException("Need set default strategy");
+        }
+    }
+
+    private void removeGoodList(List<Goods> remainGoodList, List<Goods> goodsList) {
+        remainGoodList.removeAll(goodsList);
     }
 
     public void initDiscountStrategy(DiscountStrategy... discountStrategies) {

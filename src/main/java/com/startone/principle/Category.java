@@ -10,5 +10,6 @@ public enum Category {
 
     DRINK,
     MEAT,
-    ELECTRONICS
+    ELECTRONICS,
+    ALL
 }

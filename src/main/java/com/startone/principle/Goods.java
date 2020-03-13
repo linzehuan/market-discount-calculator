@@ -8,6 +8,11 @@ package com.startone.principle;
  */
 public class Goods {
 
+
+    public int getQuality() {
+        return quality;
+    }
+
     public static Goods getInstance(String name, Category category, double price, int quality) {
         return new Goods(name, category, price, quality);
     }
@@ -16,6 +21,10 @@ public class Goods {
         this.category = category;
         this.price = price;
         this.quality = quality;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public String name;

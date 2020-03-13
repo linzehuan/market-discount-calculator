@@ -10,9 +10,25 @@ import java.util.List;
  * @email lzh@kapark.cn
  * @date 2020/3/13 7:53 上午
  */
-public class DefaultDiscountStrategy implements DiscountStrategy{
+public class DefaultDiscountStrategy implements DiscountStrategy {
+
+    private AmountInfo amountInfo = new AmountInfo();
+
+    @Override
+    public void setLimitRule(IRule rule) {
+        return;
+    }
+
     @Override
     public double getAmount(List<Goods> goodsList) {
-        return goodsList.stream().mapToDouble(goods->goods.price*goods.quality).sum();
+        amountInfo.totalAmount = goodsList.stream().mapToDouble(goods -> goods.price * goods.quality).sum();
+        amountInfo.discount = 0;
+        amountInfo.goodsList = goodsList;
+        return amountInfo.totalAmount - amountInfo.discount;
+    }
+
+    @Override
+    public AmountInfo getAmountInfo() {
+        return amountInfo;
     }
 }
