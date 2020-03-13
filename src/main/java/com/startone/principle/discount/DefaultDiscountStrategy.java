@@ -1,6 +1,6 @@
 package com.startone.principle.discount;
 
-import com.startone.principle.AmountInfo;
+import com.startone.principle.CalculateInfo;
 import com.startone.principle.Goods;
 import com.startone.principle.rule.IRule;
 
@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class DefaultDiscountStrategy implements DiscountStrategy {
 
-    private AmountInfo amountInfo = new AmountInfo();
+    private CalculateInfo amountInfo = new CalculateInfo();
 
     @Override
     public void setLimitRule(IRule rule) {
@@ -29,7 +29,7 @@ public class DefaultDiscountStrategy implements DiscountStrategy {
     }
 
     @Override
-    public AmountInfo getAmountInfo() {
+    public CalculateInfo getAmountInfo() {
         return amountInfo;
     }
 }

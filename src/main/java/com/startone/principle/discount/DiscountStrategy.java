@@ -1,6 +1,6 @@
 package com.startone.principle.discount;
 
-import com.startone.principle.AmountInfo;
+import com.startone.principle.CalculateInfo;
 import com.startone.principle.Goods;
 import com.startone.principle.rule.IRule;
 
@@ -18,5 +18,5 @@ public interface DiscountStrategy {
 
     double getAmount(List<Goods> goodsList);
 
-    AmountInfo getAmountInfo();
+    CalculateInfo getAmountInfo();
 }

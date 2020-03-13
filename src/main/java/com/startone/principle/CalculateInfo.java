@@ -10,7 +10,7 @@ import java.util.List;
  * @email lzh@kapark.cn
  * @date 2020/3/13 5:56 下午
  */
-public class AmountInfo {
+public class CalculateInfo {
 
     public double totalAmount = 0;
 

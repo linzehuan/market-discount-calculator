@@ -1,6 +1,6 @@
 package com.startone.principle.discount;
 
-import com.startone.principle.AmountInfo;
+import com.startone.principle.CalculateInfo;
 import com.startone.principle.Goods;
 import com.startone.principle.rule.IRule;
 
@@ -17,7 +17,7 @@ public class PercentDiscountStrategy implements DiscountStrategy {
 
     private double percent;
 
-    private AmountInfo amountInfo = new AmountInfo();
+    private CalculateInfo amountInfo = new CalculateInfo();
 
     private IRule rule;
 
@@ -39,7 +39,7 @@ public class PercentDiscountStrategy implements DiscountStrategy {
     }
 
     @Override
-    public AmountInfo getAmountInfo() {
+    public CalculateInfo getAmountInfo() {
         return amountInfo;
     }
 

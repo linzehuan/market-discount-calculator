@@ -1,6 +1,6 @@
 package com.startone.principle.discount;
 
-import com.startone.principle.AmountInfo;
+import com.startone.principle.CalculateInfo;
 import com.startone.principle.Goods;
 import com.startone.principle.rule.IRule;
 
@@ -17,7 +17,7 @@ import static java.util.stream.Collectors.groupingBy;
  */
 public class HalfDiscountStrategy implements DiscountStrategy {
 
-    private AmountInfo amountInfo = new AmountInfo();
+    private CalculateInfo amountInfo = new CalculateInfo();
 
     private IRule rule;
 
@@ -35,7 +35,7 @@ public class HalfDiscountStrategy implements DiscountStrategy {
     }
 
     @Override
-    public AmountInfo getAmountInfo() {
+    public CalculateInfo getAmountInfo() {
         return amountInfo;
     }
 

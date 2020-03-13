@@ -21,7 +21,7 @@ public class MarketDiscountCalculator {
         List<Goods> remainGoodList = goodItemList;
         for (DiscountStrategy discountStrategy : discountStrategies) {
             totalAmount += discountStrategy.getAmount(remainGoodList);
-            AmountInfo amountInfo = discountStrategy.getAmountInfo();
+            CalculateInfo amountInfo = discountStrategy.getAmountInfo();
             removeGoodList(remainGoodList, amountInfo.goodsList);
         }
 
