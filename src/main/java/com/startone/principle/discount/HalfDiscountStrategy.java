@@ -11,8 +11,6 @@ import static java.util.stream.Collectors.groupingBy;
 
 /**
  * @author Lin Zehuan
- * @description
- * @email lzh@kapark.cn
  * @date 2020/3/13 10:36 下午
  */
 public class HalfDiscountStrategy implements DiscountStrategy {

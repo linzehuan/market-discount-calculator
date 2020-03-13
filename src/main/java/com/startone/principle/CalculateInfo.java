@@ -6,8 +6,6 @@ import java.util.List;
 
 /**
  * @author Lin Zehuan
- * @description
- * @email lzh@kapark.cn
  * @date 2020/3/13 5:56 下午
  */
 public class CalculateInfo {

@@ -9,8 +9,6 @@ import java.util.stream.Collectors;
 
 /**
  * @author Lin Zehuan
- * @description
- * @email lzh@kapark.cn
  * @date 2020/3/13 7:43 上午
  */
 public class PercentDiscountStrategy implements DiscountStrategy {

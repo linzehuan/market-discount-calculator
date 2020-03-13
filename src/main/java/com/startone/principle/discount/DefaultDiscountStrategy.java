@@ -8,8 +8,6 @@ import java.util.List;
 
 /**
  * @author Lin Zehuan
- * @description
- * @email lzh@kapark.cn
  * @date 2020/3/13 7:53 上午
  */
 public class DefaultDiscountStrategy implements DiscountStrategy {
@@ -18,7 +16,6 @@ public class DefaultDiscountStrategy implements DiscountStrategy {
 
     @Override
     public void setLimitRule(IRule rule) {
-        return;
     }
 
     @Override
