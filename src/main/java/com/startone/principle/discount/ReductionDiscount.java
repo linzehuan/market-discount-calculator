@@ -24,10 +24,9 @@ public class ReductionDiscount implements DiscountStrategy {
     public ReductionDiscount(ReductionSetting... reductionSettings){
         this.reductionSettings = reductionSettings;
     }
-    public void initReductionSetting(ReductionSetting... reductionSettings) {
-        this.reductionSettings = reductionSettings;
-    }
 
+
+    @Override
     public void setLimitRule(IRule rule) {
         this.rule = rule;
     }
@@ -35,7 +34,7 @@ public class ReductionDiscount implements DiscountStrategy {
     @Override
     public double getAmount(List<Goods> goodsList) {
         amountInfo.goodsList = goodsList.stream().filter(this::filterCondition).collect(Collectors.toList());
-        amountInfo.totalAmount = goodsList.stream().filter(this::filterCondition).mapToDouble(goods -> goods.price * goods.quality).sum();
+        amountInfo.totalAmount = amountInfo.goodsList .stream().mapToDouble(goods -> goods.price * goods.quality).sum();
 
         Optional<ReductionSetting> reductionSetting = Arrays.stream(reductionSettings)
                 .sorted(Comparator.comparingDouble(ReductionSetting::getReductionAmount).reversed())

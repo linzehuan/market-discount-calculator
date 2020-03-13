@@ -24,15 +24,16 @@ public class PercentDiscountStrategy implements DiscountStrategy {
     public void setLimitRule(IRule rule) {
         this.rule = rule;
     }
+
     public PercentDiscountStrategy(double percent) {
         this.percent = percent;
     }
 
     @Override
     public double getAmount(List<Goods> goodsList) {
-        amountInfo.totalAmount = goodsList.stream().filter(this::filterCondition).mapToDouble(goods -> goods.price * goods.quality).sum();
-        amountInfo.discount = goodsList.stream().filter(this::filterCondition).mapToDouble(goods -> goods.price * goods.quality * (1 - percent)).sum();
         amountInfo.goodsList = goodsList.stream().filter(this::filterCondition).collect(Collectors.toList());
+        amountInfo.totalAmount = amountInfo.goodsList.stream().mapToDouble(goods -> goods.price * goods.quality).sum();
+        amountInfo.discount = amountInfo.goodsList.stream().mapToDouble(goods -> goods.price * goods.quality * (1 - percent)).sum();
         return amountInfo.totalAmount - amountInfo.discount;
     }
 

@@ -29,9 +29,8 @@ public class HalfDiscountStrategy implements DiscountStrategy {
     @Override
     public double getAmount(List<Goods> goodsList) {
         amountInfo.goodsList = goodsList.stream().filter(this::filterCondition).collect(Collectors.toList());
-        amountInfo.totalAmount = goodsList.stream().filter(this::filterCondition).mapToDouble(goods -> goods.price * goods.quality).sum();
-        Map<String, List<Goods>> collect = amountInfo.goodsList.stream().collect(groupingBy(Goods::getName));
-        amountInfo.discount = collect.values().stream().mapToDouble(goods -> (goods.stream().mapToInt(Goods::getQuality).sum() / 2) * goods.get(0).price / 2).sum();
+        amountInfo.totalAmount = amountInfo.goodsList.stream().mapToDouble(goods -> goods.price * goods.quality).sum();
+        amountInfo.discount = amountInfo.goodsList.stream().mapToDouble(goods -> (goods.quality / 2) * goods.price / 2).sum();
         return amountInfo.totalAmount - amountInfo.discount;
     }
 
